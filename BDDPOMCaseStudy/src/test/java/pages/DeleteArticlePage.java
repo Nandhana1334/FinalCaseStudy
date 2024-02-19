@@ -18,7 +18,7 @@ public class DeleteArticlePage {
 //	@FindBy(xpath = "//button[@class='btn btn-sm'][1]")
 //	WebElement deleteBtn;
 	
-	@FindBy(xpath = "(//a[@class=\"author\"])[1]")
+	@FindBy(xpath = "(//a[@class='author'])[1]")
 	WebElement profile;
 	
 //	@FindBy(xpath = "//h1[contains(text(),'Article2')]")

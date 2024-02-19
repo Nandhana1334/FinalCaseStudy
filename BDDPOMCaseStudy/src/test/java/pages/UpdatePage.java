@@ -20,7 +20,7 @@ public class UpdatePage {
 	@FindBy(xpath="//input[@class='form-control ' and @name='description']") 
 	WebElement articleAbout; 
 	
-	@FindBy(xpath="//textArea[@rows='8']") 
+	@FindBy(xpath="//textArea[@placeholder = 'Write your article (in markdown)']") 
 	WebElement textArea;
 	
 	@FindBy(xpath="//input[@placeholder='Enter tags']") 
@@ -38,7 +38,7 @@ public class UpdatePage {
 //	@FindBy(xpath="//h1[contains(text(),'Article2')]")
 //    WebElement updatedTitle;
 	
-	@FindBy(xpath = "(//a[@class=\"author\"])[1]")
+	@FindBy(xpath = "(//a[@class='author'])[1]")
 	WebElement profile;
 	
 //	@FindBy(xpath = "//h1[contains(text(),'Article5')]")
