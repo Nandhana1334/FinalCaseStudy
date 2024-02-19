@@ -13,7 +13,7 @@ Scenario: Valid Login into app
 Given User is on login Page
 When User enter Valid Credentials
 | mail | pwd |
-| nandhana@gmail.com | nandha |
+| nandhana@gmail.com | nandh |
 Then Should display the success login message
 | profileName |
 | Nandhana |
