@@ -47,8 +47,9 @@ public class ArticleFunctions {
 	@Then("Should display the invalid login message")
 	public void should_display_the_invalid_login_message(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		List<List<String>> invalidMsg = dataTable.asLists();
-		String msg = invalidMsg.get(1).get(0);
+		//List<List<String>> invalidMsg = dataTable.asLists();
+		List<String> invalidMsg = dataTable.asList();
+		String msg = invalidMsg.get(1);
 		Assert.assertEquals(loginPage.invalidMsg(msg),msg);
 	}
 	
@@ -62,8 +63,8 @@ public class ArticleFunctions {
 	}
 	@Then("Should display the success login message")
 	public void should_display_the_success_login_message(io.cucumber.datatable.DataTable dataTable) {
-		List<List<String>> userName = dataTable.asLists();
-		String strUser = userName.get(1).get(0);
+		List<String> userName = dataTable.asList();
+		String strUser = userName.get(1);
 		boolean displayedName=loginPage.nameAfterLogin(strUser);
 		 
 		Assert.assertTrue(displayedName);
@@ -101,16 +102,16 @@ public class ArticleFunctions {
 	@Then("Should display the new Article Title")
 	public void should_display_the_new_article_title(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		List<List<String>> articleDetails = dataTable.asLists();
-		String strTitle = articleDetails.get(0).get(0);
+		List<String> articleDetails = dataTable.asList();
+		String strTitle = articleDetails.get(0);
 	    String articleTitle = articlePage.articleName(strTitle);
 	    Assert.assertEquals(articleTitle,strTitle);
 	}
 	@Given("User is on updateArticlePage")
 	public void user_is_on_update_article_page(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		List<List<String>> articleNameToUpdate = dataTable.asLists();
-		String strUpdateTitle = articleNameToUpdate.get(1).get(0);
+		List<String> articleNameToUpdate = dataTable.asList();
+		String strUpdateTitle = articleNameToUpdate.get(1);
 		updateArticlePage.navigateToProfile();
 	    updateArticlePage.locateTitle(strUpdateTitle).click();
 	}
@@ -125,16 +126,16 @@ public class ArticleFunctions {
 	@Then("Should display the updated Article Title")
 	public void should_display_the_updated_article_title(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		List<List<String>> articleUpdatedName= dataTable.asLists();
-		String strUpdateTitle = articleUpdatedName.get(1).get(0);
+		List<String> articleUpdatedName= dataTable.asList();
+		String strUpdateTitle = articleUpdatedName.get(1);
 		String updatedTitle = updateArticlePage.updatedName(strUpdateTitle);
 		Assert.assertEquals(updatedTitle,strUpdateTitle);
 	}
 	
 	@Given("User is on deleteArticlePage")
 	public void user_is_on_delete_article_page(io.cucumber.datatable.DataTable dataTable) {
-		List<List<String>> articleNameToDelete = dataTable.asLists();
-		String strArticleToDelete = articleNameToDelete.get(1).get(0);
+		List<String> articleNameToDelete = dataTable.asList();
+		String strArticleToDelete = articleNameToDelete.get(1);
 		deleteArticlePage.navigateToProfile();
 		deleteArticlePage.locateTitle(strArticleToDelete).click();
 	}
@@ -145,8 +146,8 @@ public class ArticleFunctions {
 	@Then("Should display the article deletion msg")
 	public void Should_display_the_article_deletion_msg(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		List<List<String>> deletionMsg = dataTable.asLists();
-		String deletionText = deletionMsg.get(1).get(0);
+		List<String> deletionMsg = dataTable.asList();
+		String deletionText = deletionMsg.get(1);
 	    //deleteArticlePage.deleteCheck();
 		Assert.assertEquals(deleteArticlePage.deleteCheck(deletionText),deletionText);
 	}
