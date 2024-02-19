@@ -37,7 +37,7 @@ public class ArticlePage {
 	
 //	@FindBy(xpath="//h1[contains(text(),'Article4')]")
 //    WebElement chkHeader;
-	
+//	
 	@FindBy(xpath="//span[text()='Title already exists.. ']")
 	WebElement invalidMsg;
 	
@@ -72,10 +72,12 @@ public class ArticlePage {
 		WebElement chkHeader = driver.findElement(By.xpath(xpathExpression));
 		return chkHeader.getText();
 	}
-	public String duplicateTitle()
-	{
-		return invalidMsg.getText();
+	public String duplicateTitle() {
+	    
+//	    String xpathExpression = "//span[text()='" + duplicateMsg + "']";
+//	    WebElement invalidMsg = driver.findElement(By.xpath(xpathExpression));
+	    return invalidMsg.getText();
 	}
-	
+
 	
 }

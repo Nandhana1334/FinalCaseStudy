@@ -27,8 +27,8 @@ public class DeleteArticlePage {
 	@FindBy(xpath="(//button[text()=' Delete Article'])[2]")
     WebElement deleteBtn;
 	
-	@FindBy(xpath="//div[contains(text(),'Articles not available.')]")
-	WebElement deletionText;
+//	@FindBy(xpath="//div[contains(text(),'Articles not available.')]")
+//	WebElement deletionText;
 	
 	public DeleteArticlePage(WebDriver driver)
 	{
@@ -60,10 +60,13 @@ public class DeleteArticlePage {
 		
 		
 	}
-	public String deleteCheck()
-	{
-		return deletionText.getText();
+	public String deleteCheck(String deletionMsg) {
+
+	    String xpathExpression = "//div[contains(text(),'" + deletionMsg + "')]";
+	    WebElement deletionText = driver.findElement(By.xpath(xpathExpression));
+	    return deletionText.getText();
 	}
+
 	
 
 }

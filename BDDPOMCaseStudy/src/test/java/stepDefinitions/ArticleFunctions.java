@@ -45,9 +45,11 @@ public class ArticleFunctions {
 		loginPage.login(strUser, strPwd);
 	}
 	@Then("Should display the invalid login message")
-	public void should_display_the_invalid_login_message() {
+	public void should_display_the_invalid_login_message(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals(loginPage.invalidMsg(),"Wrong email/password combination");
+		List<List<String>> invalidMsg = dataTable.asLists();
+		String msg = invalidMsg.get(1).get(0);
+		Assert.assertEquals(loginPage.invalidMsg(msg),msg);
 	}
 	
 	@When("User enter Valid Credentials")
@@ -59,9 +61,10 @@ public class ArticleFunctions {
 		loginPage.login(strUser, strPwd);
 	}
 	@Then("Should display the success login message")
-	public void should_display_the_success_login_message() {
-	    // Write code here that turns the phrase above into concrete actions
-		boolean displayedName= loginPage.nameAfterLogin();
+	public void should_display_the_success_login_message(io.cucumber.datatable.DataTable dataTable) {
+		List<List<String>> userName = dataTable.asLists();
+		String strUser = userName.get(1).get(0);
+		boolean displayedName=loginPage.nameAfterLogin(strUser);
 		 
 		Assert.assertTrue(displayedName);
 	}
@@ -81,7 +84,8 @@ public class ArticleFunctions {
 	}
 	@Then("Should display the duplicate article message")
 	public void should_display_the_duplicate_article_message() {
-	 
+//		List<List<String>> duplicateMsg = dataTable.asLists();
+//		String duplicateTitleMsg = duplicateMsg.get(1).get(0);
 		Assert.assertEquals(articlePage.duplicateTitle(),"Title already exists..");
 	}
 	
@@ -139,9 +143,12 @@ public class ArticleFunctions {
 	   deleteArticlePage.deleteArticle();
 	}
 	@Then("Should display the article deletion msg")
-	public void Should_display_the_article_deletion_msg() {
+	public void Should_display_the_article_deletion_msg(io.cucumber.datatable.DataTable dataTable) {
 	    // Write code here that turns the phrase above into concrete actions
-	    deleteArticlePage.deleteCheck();
+		List<List<String>> deletionMsg = dataTable.asLists();
+		String deletionText = deletionMsg.get(1).get(0);
+	    //deleteArticlePage.deleteCheck();
+		Assert.assertEquals(deleteArticlePage.deleteCheck(deletionText),deletionText);
 	}
 
 

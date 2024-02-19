@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="SampleSuite">
+	<test name ="ModuleOneTest">
+  
+	 <classes>
+		
+		 <class name ="runners.MyTestRunner"/>
+		 
+	 </classes>
+	 </test>
+	 </suite>

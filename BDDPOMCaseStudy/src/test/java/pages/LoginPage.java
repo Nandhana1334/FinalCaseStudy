@@ -26,23 +26,26 @@ public class LoginPage {
 	@FindBy(xpath ="//button[contains(text(),'Login')]")
 	WebElement login;
 	
-	@FindBy(xpath="//img[@alt='Nandhana']")
-	WebElement chckName;
-	
-	@FindBy(xpath="//ul[@class='error-messages']//li[text()='Wrong email/password combination']")
-    WebElement invalidmsg;
+//	@FindBy(xpath="//img[@alt='Nandhana']")
+//	WebElement chckName;
+//	
+//	@FindBy(xpath="//ul[@class='error-messages']//li[text()='Wrong email/password combination']")
+//    WebElement invalidmsg;
 	
 	
 	public LoginPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	public boolean nameAfterLogin()
+	public boolean nameAfterLogin(String loginName)
 	{
-		WebElement chckName=driver.findElement(By.xpath("//img[@alt='Nandhana']"));
-		boolean nameDisplayed= chckName.isDisplayed();
+		String xpathExp = "//img[@alt='" +loginName +"']";
+		
+		WebElement chkName = driver.findElement(By.xpath(xpathExp));
+		boolean nameDisplayed= chkName.isDisplayed();
 		
 		return nameDisplayed;
+		
 	}
 	public void login(String mailId,String pwd)
 	{
@@ -55,22 +58,15 @@ public class LoginPage {
 
 	}
 	
-//	public void login(String strMail,String strPwd)
-//	{
-//		driver.findElement(By.cssSelector(".nav.navbar-nav.pull-xs-right li:nth-child(2) a")).click();
-//		driver.findElement(By.name("email")).clear();
-//		driver.findElement(By.name("email")).sendKeys(strMail);
-//		driver.findElement(By.name("password")).clear();
-//		driver.findElement(By.name("password")).sendKeys(strPwd);
-//		driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
-//	}
 	
-	public String invalidMsg()
-		{
-		
-			//WebElement invalidmsg = driver.findElement(By.xpath("//ul[@class='error-messages']//li[text()='Wrong email/password combination']"));
-			return invalidmsg.getText();
-		}
+	public String invalidMsg(String invalidMsg) {
+	    
+	    String xpathExpression = "//ul[@class='error-messages']//li[text()='" + 
+	                             invalidMsg + "']";
+	    WebElement invalidLoginMsg = driver.findElement(By.xpath(xpathExpression));
+	    return invalidLoginMsg.getText();
+	}
+
 	
 
 }
